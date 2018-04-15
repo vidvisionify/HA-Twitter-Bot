@@ -142,7 +142,8 @@
             [
                 "7d8b2507.30c33c"
             ]
-        ]
+        ],
+        "icon": "node-red/comment.png"
     },
     {
         "id": "e4a2a6c0.15d528",
@@ -158,7 +159,8 @@
             [
                 "7d8b2507.30c33c"
             ]
-        ]
+        ],
+        "icon": "node-red/comment.png"
     },
     {
         "id": "7d8b2507.30c33c",
@@ -261,7 +263,8 @@
             [
                 "268e0806.3a0f98"
             ]
-        ]
+        ],
+        "icon": "node-red/comment.png"
     },
     {
         "id": "63837f40.783bc",
@@ -399,7 +402,8 @@
             [
                 "7d8b2507.30c33c"
             ]
-        ]
+        ],
+        "icon": "node-red/comment.png"
     },
     {
         "id": "78bfbd27.2c63c4",
@@ -412,21 +416,6 @@
         "wires": []
     },
     {
-        "id": "7cd9fb8.f329604",
-        "type": "simple-event",
-        "z": "a6a6fdd5.4bb71",
-        "name": "",
-        "hass": "a340a956.5fa5d8",
-        "entity": "media_player.spotify",
-        "x": 200,
-        "y": 540,
-        "wires": [
-            [
-                "70dfa9ac.387778"
-            ]
-        ]
-    },
-    {
         "id": "71a82f1c.90703",
         "type": "comment",
         "z": "a6a6fdd5.4bb71",
@@ -435,47 +424,6 @@
         "x": 110,
         "y": 500,
         "wires": []
-    },
-    {
-        "id": "70dfa9ac.387778",
-        "type": "switch",
-        "z": "a6a6fdd5.4bb71",
-        "name": "Playing?",
-        "property": "payload.new_state.state",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "playing",
-                "vt": "str"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 1,
-        "x": 440,
-        "y": 540,
-        "wires": [
-            [
-                "2b03ed61.058202"
-            ]
-        ]
-    },
-    {
-        "id": "2b03ed61.058202",
-        "type": "function",
-        "z": "a6a6fdd5.4bb71",
-        "name": "Spotify Msg",
-        "func": "var text1 = \"Rocking out to '\";\nvar text2 = \"' - \";\nvar text3 = \" on @Spotify! 🎵\";\nmsg.payload = text1 + msg.payload.new_state.attributes.media_title + text2 + msg.payload.new_state.attributes.media_artist + text3;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 470,
-        "y": 580,
-        "wires": [
-            [
-                "45a37af5.b39634"
-            ]
-        ]
     },
     {
         "id": "45a37af5.b39634",
@@ -492,8 +440,8 @@
         "randomLast": "110",
         "randomUnits": "seconds",
         "drop": true,
-        "x": 680,
-        "y": 560,
+        "x": 900,
+        "y": 540,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -509,17 +457,313 @@
         "timeout": "5",
         "timeoutUnits": "seconds",
         "rate": "1",
-        "nbRateUnits": "3",
+        "nbRateUnits": "4",
         "rateUnits": "hour",
         "randomFirst": "98",
         "randomLast": "110",
         "randomUnits": "seconds",
-        "drop": false,
+        "drop": true,
         "x": 1120,
         "y": 300,
         "wires": [
             [
                 "7d8b2507.30c33c"
+            ]
+        ]
+    },
+    {
+        "id": "bd7ff7e6.7b3488",
+        "type": "exec",
+        "z": "a6a6fdd5.4bb71",
+        "command": "curl -O \"http://s3.amazonaws.com/nxsglobal/mystateline/weather/cameras/Rockford01.jpg\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Download Webcam",
+        "x": 690,
+        "y": 820,
+        "wires": [
+            [],
+            [],
+            [
+                "c53cc4fa.996cb8"
+            ]
+        ]
+    },
+    {
+        "id": "c53cc4fa.996cb8",
+        "type": "file in",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Grab Webcam Image",
+        "filename": "Rockford01.jpg",
+        "format": "",
+        "sendError": false,
+        "x": 920,
+        "y": 780,
+        "wires": [
+            [
+                "695d6f41.ed89"
+            ]
+        ]
+    },
+    {
+        "id": "695d6f41.ed89",
+        "type": "change",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Attach Webcam Image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "media",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 960,
+        "y": 820,
+        "wires": [
+            [
+                "bcc66031.77ad8"
+            ]
+        ]
+    },
+    {
+        "id": "bcc66031.77ad8",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Downtown Msg",
+        "func": "msg.payload =\"What a lovely view of downtown Rockford.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1180,
+        "y": 820,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "993ce082.0d559",
+        "type": "comment",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Post Downtown Webcam",
+        "info": "",
+        "x": 670,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "1af6017e.f931ef",
+        "type": "inject",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "topic": "",
+        "payload": "This a test.",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 460,
+        "y": 820,
+        "wires": [
+            [
+                "bd7ff7e6.7b3488"
+            ]
+        ]
+    },
+    {
+        "id": "57f50c09.25ba14",
+        "type": "simple-event",
+        "z": "a6a6fdd5.4bb71",
+        "name": "ding",
+        "hass": "a340a956.5fa5d8",
+        "entity": "binary_sensor.ecolink_garage_door_tilt_sensor_sensor",
+        "x": 270,
+        "y": 660,
+        "wires": [
+            [
+                "82e255e8.2f0368"
+            ]
+        ]
+    },
+    {
+        "id": "82e255e8.2f0368",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "State?",
+        "func": "msg.payload = msg.payload.new_state.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 620,
+        "y": 660,
+        "wires": [
+            [
+                "132cfdd2.d4d932"
+            ]
+        ]
+    },
+    {
+        "id": "132cfdd2.d4d932",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 760,
+        "y": 660,
+        "wires": [
+            [
+                "25b4c530.bcde4a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "25b4c530.bcde4a",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Garage Msg",
+        "func": "msg.payload = \"I sense someone opened the garage door; I turned on a light 💡 since the overhead light is broken.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 930,
+        "y": 660,
+        "wires": [
+            [
+                "877656f4.a071e8"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "877656f4.a071e8",
+        "type": "delay",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 960,
+        "y": 620,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ]
+    },
+    {
+        "id": "a1e0578f.f232d8",
+        "type": "comment",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Garage Opened",
+        "info": "",
+        "x": 140,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "c9bcaf5c.66b41",
+        "type": "simple-event",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "media_player.spotify",
+        "x": 140,
+        "y": 540,
+        "wires": [
+            [
+                "7d169796.2d5c68"
+            ]
+        ]
+    },
+    {
+        "id": "7d169796.2d5c68",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Playing?",
+        "property": "payload.new_state.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "playing",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "da6d2d9a.79d9b"
+            ]
+        ]
+    },
+    {
+        "id": "da6d2d9a.79d9b",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Spotify Msg",
+        "func": "var text1 = \"Rocking out to '\";\nvar text2 = \" - \";\nvar text3 = \"' on @Spotify! 🎵 https://open.spotify.com/track/\";\nvar track = msg.payload.new_state.attributes.media_content_id.replace(\"spotify:track:\", \"\")\n\n\nmsg.payload = text1 + msg.payload.new_state.attributes.media_title + text2 + msg.payload.new_state.attributes.media_artist + text3 + track;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "285dc1cf.7da02e"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "285dc1cf.7da02e",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Add Mentions",
+        "func": "var newString = msg.payload.replace(\"Ninja Sex Party\", \"@ninjasexparty\")\nreturn { payload : newString };",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 700,
+        "y": 540,
+        "wires": [
+            [
+                "45a37af5.b39634"
             ]
         ]
     },
