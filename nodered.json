@@ -1,12 +1,19 @@
 [
     {
+        "id": "a6a6fdd5.4bb71",
+        "type": "tab",
+        "label": "HA Twitter Working",
+        "disabled": false,
+        "info": ""
+    },
+    {
         "id": "a3ca6965.88feb8",
         "type": "twitter out",
         "z": "a6a6fdd5.4bb71",
         "twitter": "",
         "name": "Tweet",
-        "x": 1590,
-        "y": 520,
+        "x": 1570,
+        "y": 800,
         "wires": []
     },
     {
@@ -19,8 +26,8 @@
         "console": false,
         "tostatus": false,
         "complete": "true",
-        "x": 1590,
-        "y": 560,
+        "x": 1570,
+        "y": 840,
         "wires": []
     },
     {
@@ -38,8 +45,8 @@
         "randomLast": "1",
         "randomUnits": "seconds",
         "drop": false,
-        "x": 1580,
-        "y": 600,
+        "x": 1560,
+        "y": 880,
         "wires": [
             [
                 "c1cf294b.cf7f88",
@@ -117,8 +124,8 @@
         "z": "a6a6fdd5.4bb71",
         "name": "Traffic Control",
         "info": "",
-        "x": 1550,
-        "y": 680,
+        "x": 1530,
+        "y": 960,
         "wires": []
     },
     {
@@ -163,15 +170,15 @@
         "pauseType": "rate",
         "timeout": "5",
         "timeoutUnits": "seconds",
-        "rate": "4",
+        "rate": "8",
         "nbRateUnits": "1",
         "rateUnits": "hour",
         "randomFirst": "98",
         "randomLast": "110",
         "randomUnits": "seconds",
         "drop": true,
-        "x": 1550,
-        "y": 640,
+        "x": 1530,
+        "y": 920,
         "wires": [
             [
                 "5bf4748c.0d6eec"
@@ -475,8 +482,8 @@
         "timer": "",
         "oldrc": false,
         "name": "Download Webcam",
-        "x": 470,
-        "y": 820,
+        "x": 510,
+        "y": 1000,
         "wires": [
             [],
             [],
@@ -493,8 +500,8 @@
         "filename": "Rockford01.jpg",
         "format": "",
         "sendError": false,
-        "x": 700,
-        "y": 780,
+        "x": 740,
+        "y": 960,
         "wires": [
             [
                 "695d6f41.ed89"
@@ -520,8 +527,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 820,
+        "x": 780,
+        "y": 1000,
         "wires": [
             [
                 "bcc66031.77ad8"
@@ -536,8 +543,8 @@
         "func": "msg.payload =\"What a lovely view of downtown Rockford.\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 960,
-        "y": 800,
+        "x": 1000,
+        "y": 980,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -737,8 +744,8 @@
         "name": "Clicks",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.clicks",
-        "x": 530,
-        "y": 900,
+        "x": 570,
+        "y": 1080,
         "wires": [
             [
                 "d52e63c9.0624d"
@@ -753,8 +760,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has clicked over \";\nvar text2 = \" times! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 950,
-        "y": 900,
+        "x": 990,
+        "y": 1080,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -770,8 +777,8 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 750,
-        "y": 900,
+        "x": 790,
+        "y": 1080,
         "wires": [
             [
                 "61847c16.db1754"
@@ -785,8 +792,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.keys_pressed",
-        "x": 520,
-        "y": 960,
+        "x": 560,
+        "y": 1140,
         "wires": [
             [
                 "caa25fa7.e809a"
@@ -801,8 +808,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has pressed over \";\nvar text2 = \" keys! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 960,
-        "y": 960,
+        "x": 1000,
+        "y": 1140,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -818,8 +825,8 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 770,
-        "y": 960,
+        "x": 810,
+        "y": 1140,
         "wires": [
             [
                 "73e3bccc.a6bd34"
@@ -833,8 +840,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.ha_uptime",
-        "x": 510,
-        "y": 1020,
+        "x": 550,
+        "y": 1200,
         "wires": [
             [
                 "24315554.d9a65a"
@@ -849,8 +856,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Home Assistant has been active for \";\nvar text2 = \" hours. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 960,
-        "y": 1020,
+        "x": 1000,
+        "y": 1200,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -866,8 +873,8 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 770,
-        "y": 1020,
+        "x": 810,
+        "y": 1200,
         "wires": [
             [
                 "fb9fd4c8.e9c688"
@@ -881,8 +888,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.since_last_boot",
-        "x": 520,
-        "y": 1080,
+        "x": 560,
+        "y": 1260,
         "wires": [
             [
                 "3d2197f6.c64008"
@@ -897,8 +904,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"It's been \";\nvar text2 = \" since the server has been restarted. 🖳 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 970,
-        "y": 1080,
+        "x": 1010,
+        "y": 1260,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -914,8 +921,8 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 770,
-        "y": 1080,
+        "x": 810,
+        "y": 1260,
         "wires": [
             [
                 "449666ab.934128"
@@ -929,8 +936,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.basement_tv_time",
-        "x": 270,
-        "y": 1160,
+        "x": 310,
+        "y": 1340,
         "wires": [
             [
                 "623c8c44.8f35b4"
@@ -945,8 +952,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
-        "y": 1140,
+        "x": 890,
+        "y": 1320,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -961,8 +968,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.den_tv_time",
-        "x": 290,
-        "y": 1260,
+        "x": 330,
+        "y": 1440,
         "wires": [
             [
                 "dc80d85d.3bfcd8"
@@ -977,8 +984,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Family TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
-        "y": 1240,
+        "x": 890,
+        "y": 1420,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -994,8 +1001,8 @@
         "func": "msg.payload = \"The Basement TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
-        "y": 1180,
+        "x": 890,
+        "y": 1360,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1011,8 +1018,8 @@
         "func": "msg.payload = \"The Family TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
-        "y": 1280,
+        "x": 890,
+        "y": 1460,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1027,8 +1034,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.pandorica_time",
-        "x": 280,
-        "y": 1360,
+        "x": 320,
+        "y": 1540,
         "wires": [
             [
                 "7c056561.6a3bcc"
@@ -1043,8 +1050,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Phil's Desktop has been on for \";\nvar text2 = \" today. 🖥️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 840,
-        "y": 1340,
+        "x": 880,
+        "y": 1520,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1060,8 +1067,8 @@
         "func": "msg.payload = \"Phil's Desktop hasn't been turned on today. 🖥️ #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 840,
-        "y": 1380,
+        "x": 880,
+        "y": 1560,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1091,8 +1098,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 680,
-        "y": 1160,
+        "x": 720,
+        "y": 1340,
         "wires": [
             [
                 "b7cb0f6f.8cdbf"
@@ -1124,8 +1131,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 680,
-        "y": 1260,
+        "x": 720,
+        "y": 1440,
         "wires": [
             [
                 "418b898f.041608"
@@ -1157,8 +1164,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 680,
-        "y": 1360,
+        "x": 720,
+        "y": 1540,
         "wires": [
             [
                 "f95449d1.d56428"
@@ -1176,8 +1183,8 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 1360,
+        "x": 550,
+        "y": 1540,
         "wires": [
             [
                 "cfaf26f9.70ce98"
@@ -1189,11 +1196,11 @@
         "type": "function",
         "z": "a6a6fdd5.4bb71",
         "name": "Random Number",
-        "func": "var x = Math.floor(Math.random() * 9) + 1  \nmsg.payload = x ;\nreturn msg;",
+        "func": "var x = Math.floor(Math.random() * 13) + 1  \nmsg.payload = x ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 170,
-        "y": 920,
+        "x": 210,
+        "y": 1100,
         "wires": [
             [
                 "96dc08af.228488"
@@ -1241,24 +1248,44 @@
             {
                 "t": "eq",
                 "v": "7",
-                "vt": "str"
+                "vt": "num"
             },
             {
                 "t": "eq",
                 "v": "8",
-                "vt": "str"
+                "vt": "num"
             },
             {
                 "t": "eq",
                 "v": "9",
-                "vt": "str"
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "12",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "num"
             }
         ],
         "checkall": "true",
         "repair": false,
-        "outputs": 9,
-        "x": 210,
-        "y": 1020,
+        "outputs": 13,
+        "x": 250,
+        "y": 1220,
         "wires": [
             [
                 "bd7ff7e6.7b3488"
@@ -1286,6 +1313,18 @@
             ],
             [
                 "823e6d49.3c2a2"
+            ],
+            [
+                "cf54542c.039ef8"
+            ],
+            [
+                "21c39606.a69fca"
+            ],
+            [
+                "b14c26d3.547bf8"
+            ],
+            [
+                "3b1c9e28.1385b2"
             ]
         ]
     },
@@ -1297,8 +1336,8 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 1260,
+        "x": 550,
+        "y": 1440,
         "wires": [
             [
                 "3c5e2a03.045d86"
@@ -1313,8 +1352,8 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 1160,
+        "x": 550,
+        "y": 1340,
         "wires": [
             [
                 "f3427a53.6379d8"
@@ -1327,8 +1366,8 @@
         "z": "a6a6fdd5.4bb71",
         "name": "Random Stats",
         "info": "",
-        "x": 190,
-        "y": 840,
+        "x": 230,
+        "y": 1020,
         "wires": []
     },
     {
@@ -1340,11 +1379,11 @@
         "payload": "",
         "payloadType": "date",
         "repeat": "",
-        "crontab": "0 10-19 * * *",
+        "crontab": "0 9-20 * * *",
         "once": false,
         "onceDelay": 0.1,
-        "x": 150,
-        "y": 880,
+        "x": 190,
+        "y": 1060,
         "wires": [
             [
                 "6b93c778.e09098"
@@ -1358,8 +1397,8 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "counter.ring_events",
-        "x": 270,
-        "y": 1460,
+        "x": 310,
+        "y": 1640,
         "wires": [
             [
                 "e8ddfc92.b0356"
@@ -1374,8 +1413,8 @@
         "func": "msg.payload = msg.payload.toString();\nvar text2 = \" motion events have happened at the front door today. 🚪️ #RandomStat\";\nmsg.payload = msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 860,
-        "y": 1440,
+        "x": 900,
+        "y": 1620,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1391,8 +1430,8 @@
         "func": "msg.payload = \"No\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 810,
-        "y": 1480,
+        "x": 850,
+        "y": 1660,
         "wires": [
             [
                 "38607bf9.6fcac4"
@@ -1422,8 +1461,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 670,
-        "y": 1460,
+        "x": 710,
+        "y": 1640,
         "wires": [
             [
                 "38607bf9.6fcac4"
@@ -1441,11 +1480,457 @@
         "func": "msg.payload = msg.payload.state;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
-        "y": 1460,
+        "x": 550,
+        "y": 1640,
         "wires": [
             [
                 "b1c23d55.2005e"
+            ]
+        ]
+    },
+    {
+        "id": "cf54542c.039ef8",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.current_version",
+        "x": 320,
+        "y": 1720,
+        "wires": [
+            [
+                "dd8330a7.dd562"
+            ]
+        ]
+    },
+    {
+        "id": "1758343d.431f6c",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "HA Version Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Currently running version \";\nvar text2 = \" of Home Assistant. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 880,
+        "y": 1720,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "dd8330a7.dd562",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 1720,
+        "wires": [
+            [
+                "1758343d.431f6c"
+            ]
+        ]
+    },
+    {
+        "id": "714cc9f0.8ec798",
+        "type": "exec",
+        "z": "a6a6fdd5.4bb71",
+        "command": "wget -O giphy.gif ",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Download GIF",
+        "x": 720,
+        "y": 840,
+        "wires": [
+            [],
+            [],
+            [
+                "8256a71b.8eb428"
+            ]
+        ]
+    },
+    {
+        "id": "8256a71b.8eb428",
+        "type": "file in",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Grab GIF",
+        "filename": "giphy.gif",
+        "format": "",
+        "sendError": false,
+        "x": 900,
+        "y": 820,
+        "wires": [
+            [
+                "4923e86d.d4a6f8"
+            ]
+        ]
+    },
+    {
+        "id": "4923e86d.d4a6f8",
+        "type": "change",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Attach GIF Image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "media",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 950,
+        "y": 860,
+        "wires": [
+            [
+                "745a9961.a75ca8"
+            ]
+        ]
+    },
+    {
+        "id": "1164a89d.c10f57",
+        "type": "giphy-random",
+        "z": "a6a6fdd5.4bb71",
+        "name": "giphy_random",
+        "apikey": "03rtbxCTxwO49cpgu17B3NzAzNOSOAex",
+        "tag": "kitten",
+        "rating": "g",
+        "x": 480,
+        "y": 820,
+        "wires": [
+            [
+                "5dae8eb6.12d4f"
+            ]
+        ]
+    },
+    {
+        "id": "745a9961.a75ca8",
+        "type": "http request",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "url": "https://catfact.ninja/fact",
+        "tls": "",
+        "x": 1090,
+        "y": 820,
+        "wires": [
+            [
+                "af039311.b8456"
+            ]
+        ]
+    },
+    {
+        "id": "af039311.b8456",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Cat Fact Msg",
+        "func": "msg.payload = msg.payload.fact.toString();\nvar text1 = \"🐱 \"\nvar text2 = \" #randomcatfact\";\nmsg.payload = msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1170,
+        "y": 860,
+        "wires": [
+            [
+                "f2818982.c0f5b8"
+            ]
+        ]
+    },
+    {
+        "id": "5dae8eb6.12d4f",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Get GIF Url",
+        "func": "msg.payload = msg.payload.data.image_url.toString();\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "714cc9f0.8ec798"
+            ]
+        ]
+    },
+    {
+        "id": "ac8fe806.1ad9a8",
+        "type": "simple-event",
+        "z": "a6a6fdd5.4bb71",
+        "name": "ding",
+        "hass": "a340a956.5fa5d8",
+        "entity": "binary_sensor.basement_motion",
+        "x": 180,
+        "y": 860,
+        "wires": [
+            [
+                "81965267.758f6"
+            ]
+        ]
+    },
+    {
+        "id": "81965267.758f6",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "State?",
+        "func": "msg.payload = msg.payload.new_state.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 170,
+        "y": 820,
+        "wires": [
+            [
+                "7811b4b5.7b002c"
+            ]
+        ]
+    },
+    {
+        "id": "7811b4b5.7b002c",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 310,
+        "y": 820,
+        "wires": [
+            [
+                "1164a89d.c10f57"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d30db84a.84c178",
+        "type": "comment",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Litterbox Cat Fact",
+        "info": "",
+        "x": 130,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "f2818982.c0f5b8",
+        "type": "delay",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 1260,
+        "y": 900,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ]
+    },
+    {
+        "id": "21c39606.a69fca",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.basement_temperature",
+        "x": 290,
+        "y": 1780,
+        "wires": [
+            [
+                "d707666.606ac98"
+            ]
+        ]
+    },
+    {
+        "id": "20c91227.0f013e",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Basement Temp Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement is \";\nvar text2 = \"°F 🌡️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 1780,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "d707666.606ac98",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 1780,
+        "wires": [
+            [
+                "20c91227.0f013e"
+            ]
+        ]
+    },
+    {
+        "id": "b14c26d3.547bf8",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "sensor.s7_battery",
+        "hass": "a340a956.5fa5d8",
+        "entity": "s7 batt",
+        "x": 370,
+        "y": 1840,
+        "wires": [
+            [
+                "168f0338.8cc6bd"
+            ]
+        ]
+    },
+    {
+        "id": "6865df1a.09408",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "s7 batt Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"📱 Phil's phone is at \";\nvar text2 = \"% battery. 🔋️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 830,
+        "y": 1840,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "168f0338.8cc6bd",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 1840,
+        "wires": [
+            [
+                "6865df1a.09408"
+            ]
+        ]
+    },
+    {
+        "id": "3b1c9e28.1385b2",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "light.nightstand",
+        "x": 280,
+        "y": 1900,
+        "wires": [
+            [
+                "a9ec1f7e.2079c"
+            ]
+        ]
+    },
+    {
+        "id": "29d8aa9c.f4a226",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Not 0?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0.0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0.0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 1900,
+        "wires": [
+            [
+                "e72efccc.d9241"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "a9ec1f7e.2079c",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.attributes.monthly_energy_kwh;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 510,
+        "y": 1900,
+        "wires": [
+            [
+                "29d8aa9c.f4a226"
+            ]
+        ]
+    },
+    {
+        "id": "e72efccc.d9241",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Nightstand msg",
+        "func": "var text1 = \"The nightstand has consumed \";\nvar text2 = \"kwh of energy in the past month. 💡🛏 #RandomStat️ \";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 860,
+        "y": 1900,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
             ]
         ]
     },
