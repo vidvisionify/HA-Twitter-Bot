@@ -1548,7 +1548,7 @@
         "oldrc": false,
         "name": "Download GIF",
         "x": 720,
-        "y": 840,
+        "y": 860,
         "wires": [
             [],
             [],
@@ -1566,7 +1566,7 @@
         "format": "",
         "sendError": false,
         "x": 900,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "4923e86d.d4a6f8"
@@ -1593,7 +1593,7 @@
         "to": "",
         "reg": false,
         "x": 950,
-        "y": 860,
+        "y": 880,
         "wires": [
             [
                 "745a9961.a75ca8"
@@ -1609,7 +1609,7 @@
         "tag": "kitten",
         "rating": "g",
         "x": 480,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "5dae8eb6.12d4f"
@@ -1626,7 +1626,7 @@
         "url": "https://catfact.ninja/fact",
         "tls": "",
         "x": 1090,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "af039311.b8456"
@@ -1642,7 +1642,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1170,
-        "y": 860,
+        "y": 880,
         "wires": [
             [
                 "f2818982.c0f5b8"
@@ -1658,7 +1658,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 530,
-        "y": 860,
+        "y": 880,
         "wires": [
             [
                 "714cc9f0.8ec798"
@@ -1673,7 +1673,7 @@
         "hass": "a340a956.5fa5d8",
         "entity": "binary_sensor.basement_motion",
         "x": 180,
-        "y": 860,
+        "y": 880,
         "wires": [
             [
                 "81965267.758f6"
@@ -1689,7 +1689,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 170,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "7811b4b5.7b002c"
@@ -1719,7 +1719,7 @@
         "repair": false,
         "outputs": 2,
         "x": 310,
-        "y": 820,
+        "y": 840,
         "wires": [
             [
                 "1164a89d.c10f57"
@@ -1734,7 +1734,7 @@
         "name": "Litterbox Cat Fact",
         "info": "",
         "x": 130,
-        "y": 780,
+        "y": 800,
         "wires": []
     },
     {
@@ -1753,7 +1753,7 @@
         "randomUnits": "seconds",
         "drop": true,
         "x": 1260,
-        "y": 900,
+        "y": 920,
         "wires": [
             [
                 "7d8b2507.30c33c"
@@ -1928,6 +1928,87 @@
         "noerr": 0,
         "x": 860,
         "y": 1900,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ]
+    },
+    {
+        "id": "8cbf03ca.729be",
+        "type": "feedparse",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "url": "https://github.com/vidvisionify/HA-Twitter-Bot/commits/master.atom",
+        "interval": 15,
+        "x": 260,
+        "y": 740,
+        "wires": [
+            [
+                "4d0ba8b6.2277b8"
+            ]
+        ]
+    },
+    {
+        "id": "3593505c.e825c",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Github Commit Msg",
+        "func": "msg.payload = msg.payload.toString();\nmsg.link = msg.link.toString();\nvar text1 = \"Updated the bot's repository on Github - \";\nvar text2 = \" \";\nmsg.payload = text1 + msg.payload + text2 + msg.link;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 900,
+        "y": 740,
+        "wires": [
+            [
+                "f63c6a19.f33538"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "4d0ba8b6.2277b8",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.link = msg.article.link ;\nmsg.payload = msg.article.title ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 740,
+        "wires": [
+            [
+                "3593505c.e825c"
+            ]
+        ]
+    },
+    {
+        "id": "261b1f9e.e1dbc",
+        "type": "comment",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Bot Github",
+        "info": "",
+        "x": 100,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "f63c6a19.f33538",
+        "type": "delay",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 1100,
+        "y": 740,
         "wires": [
             [
                 "7d8b2507.30c33c"
