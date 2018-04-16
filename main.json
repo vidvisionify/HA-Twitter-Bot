@@ -619,7 +619,7 @@
         "type": "function",
         "z": "a6a6fdd5.4bb71",
         "name": "Garage Msg",
-        "func": "msg.payload = \"I sense someone opened the garage door; I turned on a light 💡 since the overhead light is broken.\";\nreturn msg;",
+        "func": "msg.payload = \"💡 I sense someone opened the garage door; I turned on a light since the overhead light is broken. #smarthome #automation\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 930,
@@ -709,7 +709,7 @@
         "type": "function",
         "z": "a6a6fdd5.4bb71",
         "name": "Spotify Msg",
-        "func": "var text1 = \"Rocking out to '\";\nvar text2 = \" - \";\nvar text3 = \"' on @Spotify! 🎵 https://open.spotify.com/track/\";\nvar track = msg.payload.new_state.attributes.media_content_id.replace(\"spotify:track:\", \"\")\n\n\nmsg.payload = text1 + msg.payload.new_state.attributes.media_title + text2 + msg.payload.new_state.attributes.media_artist + text3 + track;\nreturn msg;",
+        "func": "var myArray = [\n  \"Rocking out to '\",\n  \"Listening to '\",\n  \"Jamming to '\",\n  \"Playing '\"\n];\n\nvar randomItem = myArray[Math.floor(Math.random()*myArray.length)];\n\nvar text2 = \" - \";\nvar text3 = \"' on @Spotify! 🎵 https://open.spotify.com/track/\";\nvar track = msg.payload.new_state.attributes.media_content_id.replace(\"spotify:track:\", \"\")\n\n\nmsg.payload = randomItem + msg.payload.new_state.attributes.media_title + text2 + msg.payload.new_state.attributes.media_artist + text3 + track;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 510,
@@ -760,7 +760,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has clicked over \";\nvar text2 = \" times! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 990,
+        "x": 1150,
         "y": 1080,
         "wires": [
             [
@@ -808,7 +808,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has pressed over \";\nvar text2 = \" keys! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1000,
+        "x": 1160,
         "y": 1140,
         "wires": [
             [
@@ -856,7 +856,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Home Assistant has been active for \";\nvar text2 = \" hours. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1000,
+        "x": 1140,
         "y": 1200,
         "wires": [
             [
@@ -904,7 +904,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"It's been \";\nvar text2 = \" since the server has been restarted. 🖳 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 1010,
+        "x": 1130,
         "y": 1260,
         "wires": [
             [
@@ -936,7 +936,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.basement_tv_time",
-        "x": 310,
+        "x": 530,
         "y": 1340,
         "wires": [
             [
@@ -952,7 +952,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
+        "x": 1130,
         "y": 1320,
         "wires": [
             [
@@ -968,7 +968,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.den_tv_time",
-        "x": 330,
+        "x": 550,
         "y": 1440,
         "wires": [
             [
@@ -984,7 +984,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Family TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
+        "x": 1130,
         "y": 1420,
         "wires": [
             [
@@ -1001,7 +1001,7 @@
         "func": "msg.payload = \"The Basement TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
+        "x": 1130,
         "y": 1360,
         "wires": [
             [
@@ -1018,7 +1018,7 @@
         "func": "msg.payload = \"The Family TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 890,
+        "x": 1130,
         "y": 1460,
         "wires": [
             [
@@ -1034,7 +1034,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.pandorica_time",
-        "x": 320,
+        "x": 540,
         "y": 1540,
         "wires": [
             [
@@ -1050,7 +1050,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Phil's Desktop has been on for \";\nvar text2 = \" today. 🖥️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 880,
+        "x": 1140,
         "y": 1520,
         "wires": [
             [
@@ -1067,7 +1067,7 @@
         "func": "msg.payload = \"Phil's Desktop hasn't been turned on today. 🖥️ #RandomStat\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 880,
+        "x": 1140,
         "y": 1560,
         "wires": [
             [
@@ -1098,7 +1098,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 720,
+        "x": 940,
         "y": 1340,
         "wires": [
             [
@@ -1131,7 +1131,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 720,
+        "x": 940,
         "y": 1440,
         "wires": [
             [
@@ -1164,7 +1164,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 720,
+        "x": 940,
         "y": 1540,
         "wires": [
             [
@@ -1183,7 +1183,7 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
+        "x": 770,
         "y": 1540,
         "wires": [
             [
@@ -1336,7 +1336,7 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
+        "x": 770,
         "y": 1440,
         "wires": [
             [
@@ -1352,7 +1352,7 @@
         "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
+        "x": 770,
         "y": 1340,
         "wires": [
             [
@@ -1378,8 +1378,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "repeat": "",
-        "crontab": "0 9-20 * * *",
+        "repeat": "3600",
+        "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "x": 190,
@@ -1397,7 +1397,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "counter.ring_events",
-        "x": 310,
+        "x": 530,
         "y": 1640,
         "wires": [
             [
@@ -1413,7 +1413,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text2 = \" motion events have happened at the front door today. 🚪️ #RandomStat\";\nmsg.payload = msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 900,
+        "x": 1120,
         "y": 1620,
         "wires": [
             [
@@ -1430,7 +1430,7 @@
         "func": "msg.payload = \"No\";\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 850,
+        "x": 1070,
         "y": 1660,
         "wires": [
             [
@@ -1461,7 +1461,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 710,
+        "x": 930,
         "y": 1640,
         "wires": [
             [
@@ -1480,7 +1480,7 @@
         "func": "msg.payload = msg.payload.state;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 550,
+        "x": 770,
         "y": 1640,
         "wires": [
             [
@@ -1495,7 +1495,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.current_version",
-        "x": 320,
+        "x": 540,
         "y": 1720,
         "wires": [
             [
@@ -1511,7 +1511,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Currently running version \";\nvar text2 = \" of Home Assistant. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 880,
+        "x": 1140,
         "y": 1720,
         "wires": [
             [
@@ -1528,7 +1528,7 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 570,
+        "x": 790,
         "y": 1720,
         "wires": [
             [
@@ -1767,7 +1767,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "sensor.basement_temperature",
-        "x": 290,
+        "x": 510,
         "y": 1780,
         "wires": [
             [
@@ -1783,7 +1783,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement is \";\nvar text2 = \"°F 🌡️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 860,
+        "x": 1120,
         "y": 1780,
         "wires": [
             [
@@ -1800,7 +1800,7 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 570,
+        "x": 790,
         "y": 1780,
         "wires": [
             [
@@ -1815,7 +1815,7 @@
         "name": "sensor.s7_battery",
         "hass": "a340a956.5fa5d8",
         "entity": "s7 batt",
-        "x": 370,
+        "x": 590,
         "y": 1840,
         "wires": [
             [
@@ -1831,7 +1831,7 @@
         "func": "msg.payload = msg.payload.toString();\nvar text1 = \"📱 Phil's phone is at \";\nvar text2 = \"% battery. 🔋️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 830,
+        "x": 1150,
         "y": 1840,
         "wires": [
             [
@@ -1848,7 +1848,7 @@
         "func": "msg.payload = msg.payload.state ;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 570,
+        "x": 790,
         "y": 1840,
         "wires": [
             [
@@ -1863,7 +1863,7 @@
         "name": "",
         "hass": "a340a956.5fa5d8",
         "entity": "light.nightstand",
-        "x": 280,
+        "x": 500,
         "y": 1900,
         "wires": [
             [
@@ -1893,7 +1893,7 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 690,
+        "x": 910,
         "y": 1900,
         "wires": [
             [
@@ -1910,7 +1910,7 @@
         "func": "msg.payload = msg.payload.attributes.monthly_energy_kwh;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 510,
+        "x": 730,
         "y": 1900,
         "wires": [
             [
@@ -1926,7 +1926,7 @@
         "func": "var text1 = \"The nightstand has consumed \";\nvar text2 = \"kwh of energy in the past month. 💡🛏 #RandomStat️ \";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 860,
+        "x": 1140,
         "y": 1900,
         "wires": [
             [
@@ -2014,6 +2014,105 @@
                 "7d8b2507.30c33c"
             ]
         ]
+    },
+    {
+        "id": "46efa06a.0f47f",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.fastcom_download",
+        "x": 350,
+        "y": 40,
+        "wires": [
+            [
+                "a69d93a8.e761e"
+            ]
+        ]
+    },
+    {
+        "id": "a69d93a8.e761e",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.download = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 80,
+        "wires": [
+            [
+                "3488fb1b.645504"
+            ]
+        ]
+    },
+    {
+        "id": "6ffee4ae.15867c",
+        "type": "inject",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "00 12 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "46efa06a.0f47f"
+            ]
+        ]
+    },
+    {
+        "id": "3488fb1b.645504",
+        "type": "state",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.speedtest_upload",
+        "x": 710,
+        "y": 40,
+        "wires": [
+            [
+                "d8e6049c.01baf8"
+            ]
+        ]
+    },
+    {
+        "id": "d8e6049c.01baf8",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Payload State Set",
+        "func": "msg.upload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 80,
+        "wires": [
+            [
+                "9e89afe9.8bd2b"
+            ]
+        ]
+    },
+    {
+        "id": "9e89afe9.8bd2b",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Internet Speeds Msg",
+        "func": "msg.download = msg.download.toString();\nmsg.upload = msg.upload.toString();\nvar text1 = \"Our @Xfinity internet connection is running at \";\nvar text2 = \" mbps🔽 and \";\nvar text3 = \" mbps🔼. #DailyStat #SmartHome\";\nmsg.payload = text1 + msg.download + text2 + msg.upload + text3;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 40,
+        "wires": [
+            [
+                "7d8b2507.30c33c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
     },
     {
         "id": "a340a956.5fa5d8",
