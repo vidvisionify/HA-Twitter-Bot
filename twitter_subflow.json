@@ -1,0 +1,101 @@
+[
+    {
+        "id": "a2cc32e8.5ce71",
+        "type": "subflow",
+        "name": "Twitter w/ Traffic Control",
+        "info": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "63b43ad1.a64074"
+                    }
+                ]
+            }
+        ],
+        "out": []
+    },
+    {
+        "id": "b8ec5381.86231",
+        "type": "twitter out",
+        "z": "a2cc32e8.5ce71",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 550,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1f731d01.4dbe43",
+        "type": "debug",
+        "z": "a2cc32e8.5ce71",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d26b6fbd.7187f",
+        "type": "delay",
+        "z": "a2cc32e8.5ce71",
+        "name": "Random Delay",
+        "pauseType": "random",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0",
+        "randomLast": "1",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 380,
+        "y": 80,
+        "wires": [
+            [
+                "1f731d01.4dbe43",
+                "b8ec5381.86231"
+            ]
+        ]
+    },
+    {
+        "id": "de1e966f.985f68",
+        "type": "comment",
+        "z": "a2cc32e8.5ce71",
+        "name": "Traffic Control",
+        "info": "",
+        "x": 190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "63b43ad1.a64074",
+        "type": "delay",
+        "z": "a2cc32e8.5ce71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "8",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "d26b6fbd.7187f"
+            ]
+        ]
+    }
+]
