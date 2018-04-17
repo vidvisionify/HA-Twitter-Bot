@@ -1,0 +1,1219 @@
+[
+    {
+        "id": "a2cc32e8.5ce71",
+        "type": "subflow",
+        "name": "Twitter w/ Traffic Control",
+        "info": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 80,
+                "wires": [
+                    {
+                        "id": "63b43ad1.a64074"
+                    }
+                ]
+            }
+        ],
+        "out": []
+    },
+    {
+        "id": "b8ec5381.86231",
+        "type": "twitter out",
+        "z": "a2cc32e8.5ce71",
+        "twitter": "",
+        "name": "Tweet",
+        "x": 550,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1f731d01.4dbe43",
+        "type": "debug",
+        "z": "a2cc32e8.5ce71",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 550,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "d26b6fbd.7187f",
+        "type": "delay",
+        "z": "a2cc32e8.5ce71",
+        "name": "Random Delay",
+        "pauseType": "random",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "0",
+        "randomLast": "1",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 380,
+        "y": 80,
+        "wires": [
+            [
+                "1f731d01.4dbe43",
+                "b8ec5381.86231"
+            ]
+        ]
+    },
+    {
+        "id": "de1e966f.985f68",
+        "type": "comment",
+        "z": "a2cc32e8.5ce71",
+        "name": "Traffic Control",
+        "info": "",
+        "x": 190,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "63b43ad1.a64074",
+        "type": "delay",
+        "z": "a2cc32e8.5ce71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "8",
+        "nbRateUnits": "1",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 190,
+        "y": 80,
+        "wires": [
+            [
+                "d26b6fbd.7187f"
+            ]
+        ]
+    },
+    {
+        "id": "580d717b.f39d2",
+        "type": "tab",
+        "label": "HA Twitter #RandomStats",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6a3d6d7b.a10984",
+        "type": "change",
+        "z": "580d717b.f39d2",
+        "name": "Attach Webcam Image",
+        "rules": [
+            {
+                "t": "set",
+                "p": "media",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 80,
+        "wires": [
+            [
+                "aa8ead8b.4be8"
+            ]
+        ]
+    },
+    {
+        "id": "573da763.28e348",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "Clicks",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.clicks",
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "e8392212.5803c"
+            ]
+        ]
+    },
+    {
+        "id": "5d83b727.a39d78",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Clicks Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has clicked over \";\nvar text2 = \" times! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1070,
+        "y": 120,
+        "wires": [
+            [
+                "c79529e.e2a18d8"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "e8392212.5803c",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 120,
+        "wires": [
+            [
+                "5d83b727.a39d78"
+            ]
+        ]
+    },
+    {
+        "id": "b276e7d2.611f38",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.keys_pressed",
+        "x": 480,
+        "y": 180,
+        "wires": [
+            [
+                "91e47c3.0d3558"
+            ]
+        ]
+    },
+    {
+        "id": "e14207bb.701ca8",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Keys Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Since installing @WhatPulse, Phil has pressed over \";\nvar text2 = \" keys! 🖰 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1080,
+        "y": 180,
+        "wires": [
+            [
+                "c79529e.e2a18d8"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "91e47c3.0d3558",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 180,
+        "wires": [
+            [
+                "e14207bb.701ca8"
+            ]
+        ]
+    },
+    {
+        "id": "44ee7fbc.480f8",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.ha_uptime",
+        "x": 470,
+        "y": 240,
+        "wires": [
+            [
+                "965b6ee8.fda2"
+            ]
+        ]
+    },
+    {
+        "id": "4873d1dd.8bd04",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "HA Uptime Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Home Assistant has been active for \";\nvar text2 = \" hours. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 240,
+        "wires": [
+            [
+                "291bc82d.f8e178"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "965b6ee8.fda2",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 240,
+        "wires": [
+            [
+                "4873d1dd.8bd04"
+            ]
+        ]
+    },
+    {
+        "id": "e59f78aa.c7a938",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.since_last_boot",
+        "x": 480,
+        "y": 300,
+        "wires": [
+            [
+                "5410aae0.4d1154"
+            ]
+        ]
+    },
+    {
+        "id": "a8bc9272.76edb",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Server Uptime Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"It's been \";\nvar text2 = \" since the server has been restarted. 🖳 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 300,
+        "wires": [
+            [
+                "291bc82d.f8e178"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "5410aae0.4d1154",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "a8bc9272.76edb"
+            ]
+        ]
+    },
+    {
+        "id": "462b1293.47edec",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.basement_tv_time",
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "61f38966.103998"
+            ]
+        ]
+    },
+    {
+        "id": "3922687c.a00e98",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "BTV Uptime Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 360,
+        "wires": [
+            [
+                "291bc82d.f8e178"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "f762753a.8b2f18",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.den_tv_time",
+        "x": 470,
+        "y": 480,
+        "wires": [
+            [
+                "e007f8a0.d8d8a8"
+            ]
+        ]
+    },
+    {
+        "id": "19108cb8.9c2ad3",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "DTV Uptime Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Family TV has been on for \";\nvar text2 = \" today. 📺 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 460,
+        "wires": [
+            [
+                "d227d765.c8c208"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "3bd6fc3.4ac4104",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "BTV Still Off Msg",
+        "func": "msg.payload = \"The Basement TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 400,
+        "wires": [
+            [
+                "d227d765.c8c208"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "d202c641.842e48",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "DTV Still Off Msg",
+        "func": "msg.payload = \"The Family TV hasn't been turned on today. 📺 #RandomStat\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1050,
+        "y": 500,
+        "wires": [
+            [
+                "d227d765.c8c208"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "a96f8947.4583c8",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.pandorica_time",
+        "x": 460,
+        "y": 580,
+        "wires": [
+            [
+                "ce98b28a.686df"
+            ]
+        ]
+    },
+    {
+        "id": "50f1d2f0.b2895c",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "PC Uptime Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Phil's Desktop has been on for \";\nvar text2 = \" today. 🖥️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 560,
+        "wires": [
+            [
+                "17bb0f70.4cb4a1"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "fb1c649e.801648",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "PC Still Off Msg",
+        "func": "msg.payload = \"Phil's Desktop hasn't been turned on today. 🖥️ #RandomStat\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 600,
+        "wires": [
+            [
+                "17bb0f70.4cb4a1"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "6747c87d.678b48",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "Not 0m?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0 minutes",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0 minutes",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "3922687c.a00e98"
+            ],
+            [
+                "3bd6fc3.4ac4104"
+            ]
+        ]
+    },
+    {
+        "id": "95abdf4b.9e3ca",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "Not 0m?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0 minutes",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0 minutes",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 860,
+        "y": 480,
+        "wires": [
+            [
+                "19108cb8.9c2ad3"
+            ],
+            [
+                "d202c641.842e48"
+            ]
+        ]
+    },
+    {
+        "id": "28287bf5.749734",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "Not 0m?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0 minutes",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0 minutes",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 860,
+        "y": 580,
+        "wires": [
+            [
+                "50f1d2f0.b2895c"
+            ],
+            [
+                "fb1c649e.801648"
+            ]
+        ]
+    },
+    {
+        "id": "ce98b28a.686df",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 580,
+        "wires": [
+            [
+                "28287bf5.749734"
+            ]
+        ]
+    },
+    {
+        "id": "f6d52d1f.c047e",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Random Number",
+        "func": "var x = Math.floor(Math.random() * 13) + 1  \nmsg.payload = x ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "8da75337.70673"
+            ]
+        ]
+    },
+    {
+        "id": "8da75337.70673",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "4",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "5",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "6",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "7",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "8",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "9",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "10",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "11",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "12",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "13",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 13,
+        "x": 170,
+        "y": 260,
+        "wires": [
+            [
+                "f3e44d98.88c35"
+            ],
+            [
+                "573da763.28e348"
+            ],
+            [
+                "b276e7d2.611f38"
+            ],
+            [
+                "44ee7fbc.480f8"
+            ],
+            [
+                "e59f78aa.c7a938"
+            ],
+            [
+                "462b1293.47edec"
+            ],
+            [
+                "f762753a.8b2f18"
+            ],
+            [
+                "a96f8947.4583c8"
+            ],
+            [
+                "bcb4ca6b.458b58"
+            ],
+            [
+                "754dea18.87b574"
+            ],
+            [
+                "67fc7bc3.ca5c54"
+            ],
+            [
+                "ba43e5fc.50c528"
+            ],
+            [
+                "74f27a24.937844"
+            ]
+        ]
+    },
+    {
+        "id": "e007f8a0.d8d8a8",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 480,
+        "wires": [
+            [
+                "95abdf4b.9e3ca"
+            ]
+        ]
+    },
+    {
+        "id": "61f38966.103998",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.attributes.value ;\nvar replace1 = msg.payload.replace(\"m\", \" minutes\")\nvar replace2 = replace1.replace(\"h\", \" hours\")\nreturn { payload : replace2 };",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 380,
+        "wires": [
+            [
+                "6747c87d.678b48"
+            ]
+        ]
+    },
+    {
+        "id": "5180509.21787b",
+        "type": "comment",
+        "z": "580d717b.f39d2",
+        "name": "Random Stats",
+        "info": "",
+        "x": 110,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "11ec612b.d48daf",
+        "type": "inject",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "3600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "f6d52d1f.c047e"
+            ]
+        ]
+    },
+    {
+        "id": "bcb4ca6b.458b58",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "counter.ring_events",
+        "x": 450,
+        "y": 680,
+        "wires": [
+            [
+                "9d60c338.21cf4"
+            ]
+        ]
+    },
+    {
+        "id": "b38aee13.1b57c",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Motion Counter Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text2 = \" motion events have happened at the front door today. 🚪️ #RandomStat\";\nmsg.payload = msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 660,
+        "wires": [
+            [
+                "17bb0f70.4cb4a1"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "1a3878c3.334677",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "No",
+        "func": "msg.payload = \"No\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 990,
+        "y": 700,
+        "wires": [
+            [
+                "b38aee13.1b57c"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "1799dd61.a469f3",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "Not 0?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 850,
+        "y": 680,
+        "wires": [
+            [
+                "b38aee13.1b57c"
+            ],
+            [
+                "1a3878c3.334677"
+            ]
+        ]
+    },
+    {
+        "id": "9d60c338.21cf4",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 690,
+        "y": 680,
+        "wires": [
+            [
+                "1799dd61.a469f3"
+            ]
+        ]
+    },
+    {
+        "id": "754dea18.87b574",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.current_version",
+        "x": 460,
+        "y": 760,
+        "wires": [
+            [
+                "6f237387.fc263c"
+            ]
+        ]
+    },
+    {
+        "id": "23dfb360.3412dc",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "HA Version Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"Currently running version \";\nvar text2 = \" of Home Assistant. 🏠 #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 760,
+        "wires": [
+            [
+                "1078ec98.81d643"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "6f237387.fc263c",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 760,
+        "wires": [
+            [
+                "23dfb360.3412dc"
+            ]
+        ]
+    },
+    {
+        "id": "67fc7bc3.ca5c54",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "sensor.basement_temperature",
+        "x": 430,
+        "y": 820,
+        "wires": [
+            [
+                "1732824e.6d3ede"
+            ]
+        ]
+    },
+    {
+        "id": "94bad538.d88728",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Basement Temp Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"The Basement is \";\nvar text2 = \"°F 🌡️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1040,
+        "y": 820,
+        "wires": [
+            [
+                "1078ec98.81d643"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "1732824e.6d3ede",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 820,
+        "wires": [
+            [
+                "94bad538.d88728"
+            ]
+        ]
+    },
+    {
+        "id": "ba43e5fc.50c528",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "sensor.s7_battery",
+        "hass": "a340a956.5fa5d8",
+        "entity": "s7 batt",
+        "x": 510,
+        "y": 880,
+        "wires": [
+            [
+                "6c0283bb.b48fbc"
+            ]
+        ]
+    },
+    {
+        "id": "6c264d1.5cbc2b4",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "s7 batt Msg",
+        "func": "msg.payload = msg.payload.toString();\nvar text1 = \"📱 Phil's phone is at \";\nvar text2 = \"% battery. 🔋️ #RandomStat\";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1070,
+        "y": 880,
+        "wires": [
+            [
+                "1078ec98.81d643"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "6c0283bb.b48fbc",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.state ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 710,
+        "y": 880,
+        "wires": [
+            [
+                "6c264d1.5cbc2b4"
+            ]
+        ]
+    },
+    {
+        "id": "74f27a24.937844",
+        "type": "state",
+        "z": "580d717b.f39d2",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "light.nightstand",
+        "x": 420,
+        "y": 940,
+        "wires": [
+            [
+                "8acd904a.16f4b"
+            ]
+        ]
+    },
+    {
+        "id": "b852be9f.5e023",
+        "type": "switch",
+        "z": "580d717b.f39d2",
+        "name": "Not 0?",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "0.0",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "0.0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 830,
+        "y": 940,
+        "wires": [
+            [
+                "2152859d.e8877a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8acd904a.16f4b",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Payload State Set",
+        "func": "msg.payload = msg.payload.attributes.monthly_energy_kwh;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 650,
+        "y": 940,
+        "wires": [
+            [
+                "b852be9f.5e023"
+            ]
+        ]
+    },
+    {
+        "id": "2152859d.e8877a",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Nightstand msg",
+        "func": "var text1 = \"The nightstand has consumed \";\nvar text2 = \"kwh of energy in the past month. 💡🛏 #RandomStat️ \";\nmsg.payload = text1 + msg.payload + text2;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 940,
+        "wires": [
+            [
+                "ad4792db.b14f4"
+            ]
+        ]
+    },
+    {
+        "id": "8e753415.522358",
+        "type": "file in",
+        "z": "580d717b.f39d2",
+        "name": "Grab Webcam Image",
+        "filename": "Rockford01.jpg",
+        "format": "",
+        "sendError": false,
+        "x": 800,
+        "y": 40,
+        "wires": [
+            [
+                "6a3d6d7b.a10984"
+            ]
+        ]
+    },
+    {
+        "id": "aa8ead8b.4be8",
+        "type": "function",
+        "z": "580d717b.f39d2",
+        "name": "Downtown Msg",
+        "func": "msg.payload =\"What a lovely view of downtown Rockford.\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 60,
+        "wires": [
+            [
+                "c79529e.e2a18d8"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "f3e44d98.88c35",
+        "type": "exec",
+        "z": "580d717b.f39d2",
+        "command": "curl -O \"http://s3.amazonaws.com/nxsglobal/mystateline/weather/cameras/Rockford01.jpg\"",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Download Webcam",
+        "x": 450,
+        "y": 60,
+        "wires": [
+            [],
+            [],
+            [
+                "8e753415.522358"
+            ]
+        ]
+    },
+    {
+        "id": "c79529e.e2a18d8",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "291bc82d.f8e178",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d227d765.c8c208",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "17bb0f70.4cb4a1",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "1078ec98.81d643",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "ad4792db.b14f4",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "580d717b.f39d2",
+        "x": 1340,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "a340a956.5fa5d8",
+        "type": "home-assistant-config",
+        "z": "",
+        "name": "",
+        "host": "localhost",
+        "port": "8123",
+        "ssl": false
+    }
+]
