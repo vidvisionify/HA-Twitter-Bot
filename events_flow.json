@@ -686,7 +686,7 @@
         "oldrc": false,
         "name": "Download GIF",
         "x": 740,
-        "y": 900,
+        "y": 920,
         "wires": [
             [],
             [],
@@ -704,7 +704,7 @@
         "format": "",
         "sendError": false,
         "x": 920,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "4923e86d.d4a6f8"
@@ -731,7 +731,7 @@
         "to": "",
         "reg": false,
         "x": 970,
-        "y": 920,
+        "y": 940,
         "wires": [
             [
                 "745a9961.a75ca8"
@@ -747,7 +747,7 @@
         "tag": "kitten",
         "rating": "g",
         "x": 500,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "5dae8eb6.12d4f"
@@ -764,7 +764,7 @@
         "url": "https://catfact.ninja/fact",
         "tls": "",
         "x": 1110,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "af039311.b8456"
@@ -780,7 +780,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 1190,
-        "y": 920,
+        "y": 940,
         "wires": [
             [
                 "f2818982.c0f5b8"
@@ -796,7 +796,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 550,
-        "y": 920,
+        "y": 940,
         "wires": [
             [
                 "714cc9f0.8ec798"
@@ -811,7 +811,7 @@
         "hass": "a340a956.5fa5d8",
         "entity": "binary_sensor.basement_motion",
         "x": 200,
-        "y": 920,
+        "y": 940,
         "wires": [
             [
                 "81965267.758f6"
@@ -827,7 +827,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 190,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "7811b4b5.7b002c"
@@ -857,7 +857,7 @@
         "repair": false,
         "outputs": 2,
         "x": 330,
-        "y": 880,
+        "y": 900,
         "wires": [
             [
                 "1164a89d.c10f57"
@@ -872,7 +872,7 @@
         "name": "Litterbox Cat Fact",
         "info": "",
         "x": 150,
-        "y": 840,
+        "y": 860,
         "wires": []
     },
     {
@@ -890,8 +890,8 @@
         "randomLast": "110",
         "randomUnits": "seconds",
         "drop": true,
-        "x": 1280,
-        "y": 960,
+        "x": 1340,
+        "y": 900,
         "wires": [
             [
                 "e4cde584.031648"
@@ -906,7 +906,7 @@
         "url": "https://github.com/vidvisionify/HA-Twitter-Bot/commits/master.atom",
         "interval": 15,
         "x": 280,
-        "y": 780,
+        "y": 800,
         "wires": [
             [
                 "4d0ba8b6.2277b8"
@@ -922,7 +922,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 920,
-        "y": 780,
+        "y": 800,
         "wires": [
             [
                 "f63c6a19.f33538"
@@ -939,7 +939,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 690,
-        "y": 780,
+        "y": 800,
         "wires": [
             [
                 "3593505c.e825c"
@@ -953,7 +953,7 @@
         "name": "Bot Github",
         "info": "",
         "x": 120,
-        "y": 740,
+        "y": 760,
         "wires": []
     },
     {
@@ -972,7 +972,7 @@
         "randomUnits": "seconds",
         "drop": true,
         "x": 1120,
-        "y": 780,
+        "y": 800,
         "wires": [
             [
                 "59e08fe4.e7e11"
@@ -1092,6 +1092,7 @@
         "id": "79860dd7.719a34",
         "type": "subflow:a2cc32e8.5ce71",
         "z": "a6a6fdd5.4bb71",
+        "name": "",
         "x": 1300,
         "y": 80,
         "wires": []
@@ -1132,7 +1133,7 @@
         "id": "b8799709.e73638",
         "type": "subflow:a2cc32e8.5ce71",
         "z": "a6a6fdd5.4bb71",
-        "x": 1220,
+        "x": 1240,
         "y": 680,
         "wires": []
     },
@@ -1141,16 +1142,181 @@
         "type": "subflow:a2cc32e8.5ce71",
         "z": "a6a6fdd5.4bb71",
         "x": 1340,
-        "y": 780,
+        "y": 800,
         "wires": []
     },
     {
         "id": "e4cde584.031648",
         "type": "subflow:a2cc32e8.5ce71",
         "z": "a6a6fdd5.4bb71",
-        "x": 1500,
-        "y": 920,
+        "x": 1560,
+        "y": 900,
         "wires": []
+    },
+    {
+        "id": "13776e2c.255a42",
+        "type": "comment",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Plex Media Players",
+        "info": "",
+        "x": 150,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "859682ae.dd194",
+        "type": "simple-event",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "hass": "a340a956.5fa5d8",
+        "entity": "media_player.plex_chrome",
+        "x": 220,
+        "y": 1060,
+        "wires": [
+            [
+                "d421ab4f.93a3b8"
+            ]
+        ]
+    },
+    {
+        "id": "d421ab4f.93a3b8",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Playing?",
+        "property": "payload.new_state.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "playing",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 480,
+        "y": 1060,
+        "wires": [
+            [
+                "f757806c.9f26c"
+            ]
+        ]
+    },
+    {
+        "id": "cfd91109.0ae12",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Media Type?",
+        "func": "msg.mediatype = msg.payload.new_state.attributes.media_content_type;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 810,
+        "y": 1040,
+        "wires": [
+            [
+                "9064bf4d.236f4"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "9064bf4d.236f4",
+        "type": "switch",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "property": "mediatype",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "tvshow",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "movie",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 960,
+        "y": 1060,
+        "wires": [
+            [
+                "c5175c2f.70566"
+            ],
+            [
+                "46c86227.00487c"
+            ]
+        ]
+    },
+    {
+        "id": "c5175c2f.70566",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "TV Plex Msg",
+        "func": "msg.S = msg.payload.new_state.attributes.media_season;\nmsg.E = msg.payload.new_state.attributes.media_episode;\n\nvar txt1 = \"📺 \";\nmsg.user = msg.payload.new_state.attributes.session_username;\nvar realuser = msg.user.replace(\"vidvisionify\", \"Phil\");\nvar txt2 = \" is watching \";\nvar title = msg.payload.new_state.attributes.media_series_title;\nvar txt3 = \" S\";\nmsg.S = msg.payload.new_state.attributes.media_season;\nvar txt4 = \"E\";\nmsg.E = msg.payload.new_state.attributes.media_episode;\nvar txt5 = \" on Plex!\"; \nmsg.payload = txt1 + realuser + txt2 + title + txt3 + msg.S + txt4 + msg.E + txt5 ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1110,
+        "y": 1040,
+        "wires": [
+            [
+                "32fc1d51.11d1d2"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "46c86227.00487c",
+        "type": "function",
+        "z": "a6a6fdd5.4bb71",
+        "name": "Movie Plex Msg",
+        "func": "msg.S = msg.payload.new_state.attributes.media_season;\nmsg.E = msg.payload.new_state.attributes.media_episode;\n\nvar txt1 = \"🎦 \";\nmsg.user = msg.payload.new_state.attributes.session_username;\nvar realuser = msg.user.replace(\"vidvisionify\", \"Phil\");\nvar txt2 = \" is watching \";\nvar title = msg.payload.new_state.attributes.media_title;\nvar txt5 = \" on Plex!\"; \nmsg.payload = txt1 + realuser + txt2 + title + txt5 ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1120,
+        "y": 1080,
+        "wires": [
+            [
+                "32fc1d51.11d1d2"
+            ]
+        ],
+        "icon": "node-red/comment.png"
+    },
+    {
+        "id": "32fc1d51.11d1d2",
+        "type": "subflow:a2cc32e8.5ce71",
+        "z": "a6a6fdd5.4bb71",
+        "x": 1380,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "f757806c.9f26c",
+        "type": "delay",
+        "z": "a6a6fdd5.4bb71",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "hour",
+        "randomFirst": "98",
+        "randomLast": "110",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 640,
+        "y": 1060,
+        "wires": [
+            [
+                "cfd91109.0ae12"
+            ]
+        ]
     },
     {
         "id": "a340a956.5fa5d8",
